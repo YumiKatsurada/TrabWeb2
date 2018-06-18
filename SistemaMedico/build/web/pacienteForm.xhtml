@@ -36,7 +36,7 @@
             <br/>
             
             Sexo:
-            <h:inputText id="sexo" label="Sexo" required="true" value="#{novoPaciente.dadosPaciente.sexo}" />
+            <h:inputText id="sexo" label="Sexo" required="true" validator="#{novoPaciente.validarSexo}" value="#{novoPaciente.dadosPaciente.sexo}" />
             <h:message for="sexo"/>
             <br/>
             

@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.naming.NamingException;
@@ -40,4 +41,9 @@ public class ListaConsultas implements Serializable {
     	listaConsultas = consultaDAO.listarTodasConsultasPorMedico(CRM);
     	return "listaConsultas";
 	}
+        
+        public String recomecar() {
+            FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+            return "index?faces-redirect=true";
+        }
 }

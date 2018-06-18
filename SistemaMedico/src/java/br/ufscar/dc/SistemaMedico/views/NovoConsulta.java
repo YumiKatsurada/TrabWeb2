@@ -44,12 +44,23 @@ public class NovoConsulta implements Serializable {
    }
 
    public String gravarConsulta() throws SQLException, NamingException {
+       if(consultaDao.validarConsultaCPF(dadosConsulta.getCPF(), dadosConsulta.getDataExame())==null && consultaDao.validarConsultaCRM(dadosConsulta.getCRM(), dadosConsulta.getDataExame())==null){
        consultaDao.gravarConsulta(dadosConsulta);
+       
        FacesContext facesContext = FacesContext.getCurrentInstance();
        Flash flash = facesContext.getExternalContext().getFlash();
        flash.setKeepMessages(true);
        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Consulta adicionada"));
 
        return recomecar();
+       }
+       else{
+           
+           FacesContext facesContext = FacesContext.getCurrentInstance();
+            Flash flash = facesContext.getExternalContext().getFlash();
+            flash.setKeepMessages(true);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Ja existe medico ou paciente nesta data!"));
+           return recomecar();
+       }
    }
 }

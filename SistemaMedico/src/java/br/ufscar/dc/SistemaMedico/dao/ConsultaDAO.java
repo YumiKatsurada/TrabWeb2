@@ -78,20 +78,20 @@ public class ConsultaDAO {
     }
 
 
-    public Consulta validarConsultaCPF(String _CPF, String _dataExame) throws SQLException, NamingException {
+    public Consulta validarConsultaCPF(int CPF, Date dataExame) throws SQLException, NamingException {
         try (Connection con = dataSource.getConnection();
                 PreparedStatement ps = con.prepareStatement(VALIDAR_CONSULTACPF_SQL)) {
          
-                int CPF = Integer.parseInt(_CPF);
+               // int CPF = Integer.parseInt(_CPF);
                
 
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                Date dataExame = null;
-            try {
-                dataExame = sdf.parse(_dataExame);
-            } catch (ParseException ex) {
-                Logger.getLogger(ConsultaDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                //SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                //Date dataExame = null;
+          //  try {
+            //    dataExame = sdf.parse(_dataExame);
+           // } catch (ParseException ex) {
+             //   Logger.getLogger(ConsultaDAO.class.getName()).log(Level.SEVERE, null, ex);
+           // }
             
                 ps.setInt(2, CPF);
                 
@@ -103,11 +103,49 @@ public class ConsultaDAO {
 
 
             try (ResultSet rs = ps.executeQuery()) {
-                rs.next();
+                if(rs.next()){
                 Consulta u = new Consulta();
                 u.setCPF(rs.getInt("CPF"));
                 u.setDataExame(new Date(rs.getDate("dataExame").getTime()));
+                return u;}
+                else{return null;}
+            }
+        }
+    }
+    
+    public Consulta validarConsultaCRM(int CRM, Date dataExame) throws SQLException, NamingException {
+        try (Connection con = dataSource.getConnection();
+                PreparedStatement ps = con.prepareStatement(VALIDAR_CONSULTACRM_SQL)) {
+         
+                /*int CRM = Integer.parseInt(_CRM);
+               
+
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                Date dataExame = null;
+            try {
+                dataExame = sdf.parse(_dataExame);
+            } catch (ParseException ex) {
+                Logger.getLogger(ConsultaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            */
+                ps.setInt(2, CRM);
+                
+                ps.setDate(1, new java.sql.Date(dataExame.getTime()));
+  
+                 //ps.setDate(4, new java.sql.Date(_dataExame.getTime()));
+            
+            
+
+
+            try (ResultSet rs = ps.executeQuery()) {
+               if(rs.next()){
+                Consulta u = new Consulta();
+                u.setCRM(rs.getInt("CRM"));
+                u.setDataExame(new Date(rs.getDate("dataExame").getTime()));
                 return u;
+               }else{
+                   return null;
+               }
             }
         }
     }
