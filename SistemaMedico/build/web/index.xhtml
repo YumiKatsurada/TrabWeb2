@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Sistema Medico JSF</title>
+        <h:messages globalOnly="true" />
+        <h:outputStylesheet library="css" name="estilo.css"/>
+    </h:head>
+    <h:body>
+        <h1>Bem-vindo ao Sistema Medico</h1>
+        <p>Escolha o que deseja fazer:</p>
+        <h:form>
+            <h:commandLink action="logingAdminMedico">Cadastro de Médico</h:commandLink><br/>
+            <h:commandLink action="loginAdminPaciente">Cadastro de pacientes</h:commandLink><br/>
+            <h:commandLink action="#{listaMedicos.verTodosMedicos()}">Listagem de todos os médicos</h:commandLink><br/>
+            <h:commandLink action="escolhaEspecialidade">Listagem de médicos por especialidade</h:commandLink><br/>
+            <h:commandLink action="loginConsultaPaciente">Listagem todas consultas por paciente</h:commandLink><br/>
+            <h:commandLink action="loginMedico">Listagem todos consultas por médico</h:commandLink><br/>
+            <h:commandLink action="loginAgendamento">Agendamento exame</h:commandLink><br/>
+        </h:form>
+    </h:body>
+</html>

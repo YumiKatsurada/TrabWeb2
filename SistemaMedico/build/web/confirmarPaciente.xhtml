@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:h="http://xmlns.jcp.org/jsf/html"
+     xmlns:f="http://xmlns.jcp.org/jsf/core">
+   <h:head>
+       <title>Sistema Médico</title>
+       <h:outputStylesheet library="css" name="estilo.css"/>
+   </h:head>
+   <h:body>
+       <h1>Novo Paciente</h1>
+       <br/>
+       Tem certeza que os dados estão corretos?
+       <br/><br/>
+       CPF: <h:outputText id="CPF" value="#{novoPaciente.dadosPaciente.CPF}" /><br/>
+       Nome: <h:outputText id="nome" value="#{novoPaciente.dadosPaciente.nome}" /><br/>
+       Senha: <h:outputText id="senha" value="#{novoPaciente.dadosPaciente.senha}" /><br/>
+       Telefone: <h:outputText id="telefone" value="#{novoPaciente.dadosPaciente.telefone}" /><br/>
+       Data de nascimento: <h:outputText id="dataDeNascimento" value="#{novoPaciente.dadosPaciente.dataDeNascimento}">
+        <f:convertDateTime type="date" dateStyle="full" /> </h:outputText><br/>
+       <h:form>
+           <h:commandButton id="confirmar" value="Confirmar" action="#{novoPaciente.gravarPaciente()}"/>
+           <h:commandButton id="modificar" value="Modificar" action="pacienteForm"/>
+           <h:commandButton id="cancelar" value="Cancelar" action="#{novoPaciente.recomecar()}"/>
+       </h:form>
+   </h:body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+  	xmlns:h="http://xmlns.jcp.org/jsf/html"
+  	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	<h:head>
+    	<title>Sistema Medico</title>
+    	<h:outputStylesheet library="css" name="estilo.css"/>
+	</h:head>
+	<h:body>
+    	<h:form>
+        	<h:dataTable id="Consultas"
+                     	summary="Consultas cadastrados no sistema"
+                     	value="#{listaConsultas.listaConsultas}"
+                     	var="consulta">
+             	<h:column>
+                	<f:facet name="header">
+                    	<h:outputText value="CRM" />
+                	</f:facet>
+                	<h:outputText id="CRM" value="#{consulta.CRM}" />
+            	</h:column>
+            	<h:column>
+                	<f:facet name="header">
+                    	<h:outputText value="CPF" />
+                	</f:facet>
+                	<h:outputText id="nome" value="#{consulta.CPF}" />
+            	</h:column>
+            	<h:column>
+                	<f:facet name="header">
+                    	<h:outputText value="Data Exame" />
+                	</f:facet>
+                    <h:outputText id="especialidade" value="#{consulta.dataExame}" />
+            	</h:column>
+        	</h:dataTable>  
+    	</h:form>
+	</h:body>
+</html>
